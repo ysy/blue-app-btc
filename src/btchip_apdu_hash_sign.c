@@ -85,6 +85,7 @@ unsigned short btchip_apdu_hash_sign() {
             parameters += 4;
             sighashType = *(parameters++);
 
+#if 0 
             if (((N_btchip.bkp.config.options &
                   BTCHIP_OPTION_FREE_SIGHASHTYPE) == 0)) {
 #if defined(COIN_BITCOIN_CASH) || defined(COIN_BITCOIN_GOLD)
@@ -101,7 +102,7 @@ unsigned short btchip_apdu_hash_sign() {
                 }
 #endif
             }
-
+#endif
             // Read transaction parameters
             // TODO : remove copy
             os_memmove(&transactionSummary,

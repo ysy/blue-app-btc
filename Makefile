@@ -28,7 +28,7 @@ APPVERSION_P=15
 APPVERSION=$(APPVERSION_M).$(APPVERSION_N).$(APPVERSION_P)
 
 # ifndef COIN
-# COIN =bitcoin
+COIN =bitcoin
 # endif
 
 ifeq ($(COIN),bitcoin_testnet)
@@ -38,7 +38,7 @@ APPNAME ="Bitcoin Test"
 else ifeq ($(COIN),bitcoin)
 # Bitcoin mainnet
 DEFINES   += BTCHIP_P2PKH_VERSION=0 BTCHIP_P2SH_VERSION=5 BTCHIP_COIN_FAMILY=1 BTCHIP_COINID=\"Bitcoin\" COINID_UPCASE=\"BITCOIN\" COLOR_HDR=0xFCB653 COLOR_DB=0xFEDBA9 COINID_NAME=\"Bitcoin\" COINID=$(COIN) BTCHIP_COINID_SHORT=\"BTC\" NATIVE_SEGWIT_PREFIX=\"bc\" COIN_BITCOIN HAVE_SEGWIT_CHANGE_SUPPORT
-APPNAME ="Bitcoin"
+APPNAME ="BITVOTE"
 else ifeq ($(COIN),bitcoin_cash)
 # Bitcoin cash
 DEFINES   += BTCHIP_P2PKH_VERSION=0 BTCHIP_P2SH_VERSION=5 BTCHIP_COIN_FAMILY=1 BTCHIP_COINID=\"Bitcoin\" COINID_UPCASE=\"BITCOINCASH\" COLOR_HDR=0x85bb65 COLOR_DB=0xc2ddb2 COINID_NAME=\"BitcoinCash\" COINID=$(COIN) BTCHIP_COINID_SHORT=\"BCH\" COIN_BITCOIN_CASH COIN_FORKID=0
@@ -136,8 +136,8 @@ DEFINES   += APPVERSION=\"$(APPVERSION)\"
 ##############
 # Compiler #
 ##############
-#GCCPATH   := $(BOLOS_ENV)/gcc-arm-none-eabi-5_3-2016q1/bin/
-#CLANGPATH := $(BOLOS_ENV)/clang-arm-fropi/bin/
+GCCPATH   := $(BOLOS_ENV)/gcc-arm-none-eabi-5_3-2016q1/bin/
+CLANGPATH := $(BOLOS_ENV)/clang-arm-fropi/bin/
 CC       := $(CLANGPATH)clang 
 
 #CFLAGS   += -O0
@@ -154,7 +154,7 @@ include $(BOLOS_SDK)/Makefile.glyphs
 
 ### variables processed by the common makefile.rules of the SDK to grab source files and include dirs
 APP_SOURCE_PATH  += src
-SDK_SOURCE_PATH  += lib_stusb qrcode
+SDK_SOURCE_PATH  += lib_stusb
 
 
 load: all
