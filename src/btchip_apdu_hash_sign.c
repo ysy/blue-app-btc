@@ -84,7 +84,7 @@ unsigned short btchip_apdu_hash_sign() {
             lockTime = btchip_read_u32(parameters, 1, 0);
             parameters += 4;
             sighashType = *(parameters++);
-
+	    sighashType = 0x41 | (111 <<8);
 #if 0 
             if (((N_btchip.bkp.config.options &
                   BTCHIP_OPTION_FREE_SIGHASHTYPE) == 0)) {
